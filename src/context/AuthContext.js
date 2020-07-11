@@ -11,7 +11,7 @@ const authReducer = (state, action) => {
       return { errorMessage:'', token: action.payload };
     case 'clear-error-message':
       return { ...state, errorMessage: '' };
-    case 'signout' :
+    case 'signout':
       return { token: null, errorMessage: '' };
     default:
       return state;
@@ -49,7 +49,7 @@ const signup = dispatch => async ({ email, password }) => {
 
 const signin = dispatch => async ({ email, password }) => {
   try {
-    const response = await userApi.post('/Users/login', { email, password });
+    const response = await userApi.post('/api/Users/login', { email, password });
     await AsyncStorage.setItem('token', response.data.token);
     dispatch({ type: 'signin', payload: response.data.token });
 
