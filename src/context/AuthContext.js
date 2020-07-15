@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import createDataContext from './createDataContext';
 import userApi from '../api/user';
 import { navigate } from '../navigationRef';
@@ -50,8 +50,8 @@ const signup = dispatch => async ({ email, password }) => {
 const signin = dispatch => async ({ email, password }) => {
   try {
     const response = await userApi.post('/api/Users/login', { email, password });
-    await AsyncStorage.setItem('token', response.data.token);
-    dispatch({ type: 'signin', payload: response.data.token });
+    await AsyncStorage.setItem('token', response.data.id);
+    dispatch({ type: 'signin', payload: response.data.id });
 
     navigate('Stations');
   } catch (err) {

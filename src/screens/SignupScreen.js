@@ -10,7 +10,7 @@ const SignupScreen = () => {
 
   return (
     <View style={styles.container}>
-      <NavigationEvents onWillBlur = { clearErrorMessage } />
+
       <AuthForm 
         headaeText= "Sign Up for Tracker"
         errorMessage= {state.errorMessage}

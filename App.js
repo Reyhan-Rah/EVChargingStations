@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
-import  React from 'react';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { View, Text } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-
-import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { navigationRef } from './src/navigationRef';
 
 import AccountScreen from './src/screens/StationsScreen';
 import SignupScreen from './src/screens/SignupScreen';
@@ -13,26 +13,26 @@ import CompanyScreen from './src/screens/CompanyScreen';
 import StationsScreen from './src/screens/StationsScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 
-const switchNavigator = createSwitchNavigator({
-  loginFlow: createStackNavigator({
-    Signup: SignupScreen,
-    Signin: SigninScreen
-  }),
-  mainFlow: createBottomTabNavigator({
-    Stations: StationsScreen,
-    Company: CompanyScreen,
-    Account: AccountScreen
-  })
-});
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
 
-const App = createAppContainer(switchNavigator);
+const Stack = createStackNavigator();
 
-export default () => {
+function App() {
   return (
     <AuthProvider>
-      
-        <App />
-      
+      <NavigationContainer ref={navigationRef}>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={SigninScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </AuthProvider>
   );
-};
+}
+
+export default App;

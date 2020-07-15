@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Spacer from './Spacer';
-import { withNavigation } from 'react-navigation';
+import * as navigationRef from '../navigationRef';
 
 const NavLink = ({ navigation, text, routeName }) => {
   return(
-    <TouchableOpacity onPress={() => navigation.navigate({routeName})}>
+    <TouchableOpacity onPress={() => navigationRef.navigate({routeName})}>
       <Spacer>
         <Text style={styles.link}>{text}</Text>
       </Spacer>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default withNavigation(NavLink);
+export default NavLink;
