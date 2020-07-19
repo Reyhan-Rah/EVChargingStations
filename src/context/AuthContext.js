@@ -35,8 +35,8 @@ const clearErrorMessage = dispatch => () => {
 const signup = dispatch => async ({ email, password }) => {
   try {
     const response = await userApi.post('/Users', { email, password });
-    await AsyncStorage.setItem('token', response.data.token);
-    dispatch({ type: 'signin', payload: response.data.token });
+    await AsyncStorage.setItem('token', response.data.id);
+    dispatch({ type: 'signin', payload: response.data.id });
 
     navigate('Stations');
   } catch (err) {

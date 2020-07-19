@@ -28,7 +28,9 @@ function App() {
     <AuthProvider>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={SigninScreen} />
+          <Stack.Screen name="Signin" component={SigninScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
+          <Stack.Screen name="Stations" component={StationsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>
