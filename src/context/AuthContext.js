@@ -49,7 +49,7 @@ const signup = dispatch => async ({ email, password }) => {
 
 const signin = dispatch => async ({ email, password }) => {
   try {
-    const response = await userApi.post('/api/Users/login', { email, password });
+    const response = await userApi.post('/Users/login', { email, password });
     await AsyncStorage.setItem('token', response.data.id);
     dispatch({ type: 'signin', payload: response.data.id });
 
