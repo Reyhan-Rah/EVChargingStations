@@ -1,43 +1,42 @@
-import React, { useContext } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { NavigationEvents } from 'react-navigation';
+import React, {useContext} from 'react';
+import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {NavigationEvents} from 'react-navigation';
 import AuthForm from '../components/AuthForm';
 import Spacer from '../components/Spacer';
 import * as navigationRef from '../navigationRef';
-import { Context as AuthContext } from '../context/AuthContext';
+import {Context as AuthContext} from '../context/AuthContext';
 
 const SigninScreen = () => {
-  const { state, signin, clearErrorMessage } = useContext(AuthContext);
+  const {state, signin, clearErrorMessage} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
-
-      <AuthForm 
-        headaeText= "Sign in to your account"
-        errorMessage= {state.errorMessage}
-        submitButtonText= "Sign In"
-        onSubmit= {signin}
+      <AuthForm
+        headaeText="Sign in to your account"
+        errorMessage={state.errorMessage}
+        submitButtonText="Sign In"
+        onSubmit={signin}
       />
-      <TouchableOpacity onPress={() => navigationRef.navigate('Signup')}>
+      <TouchableOpacity onPress={() => {
+        navigationRef.navigate('Signup')
+        clearErrorMessage();
+      }}>
         <Spacer>
-          <Text style={styles.link}>"Don't have an account? Sign up instead"</Text>
+          <Text style={styles.link}>
+            "Don't have an account? Sign up instead"
+          </Text>
         </Spacer>
       </TouchableOpacity>
     </View>
   );
 };
 
-SigninScreen.navigationOptions = () => {
-  return {
-    headerShown: false
-  }
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 250
+    marginBottom: 250 ,
+    marginTop: 100
   },
   link: {
     color: 'blue'

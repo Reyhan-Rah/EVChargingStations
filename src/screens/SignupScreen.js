@@ -18,7 +18,10 @@ const SignupScreen = () => {
         submitButtonText= "Sign Up"
         onSubmit= {signup}
       />
-      <TouchableOpacity onPress={() => navigationRef.navigate('Signin')}>
+      <TouchableOpacity onPress={() => {
+        navigationRef.navigate('Signin')
+        clearErrorMessage();
+      }}>
         <Spacer>
           <Text style={styles.link}>"Don't have an account? Sign in instead"</Text>
         </Spacer>
@@ -27,17 +30,12 @@ const SignupScreen = () => {
   );
 };
 
-SignupScreen.navigationOptions = () => {
-  return {
-    headerShown: false
-  }
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 250
+    marginBottom: 250,
+    marginTop: 100
   },
   link: {
     color: 'blue'
