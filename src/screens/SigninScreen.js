@@ -1,28 +1,28 @@
 import React, {useContext} from 'react';
 import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-import {NavigationEvents} from 'react-navigation';
 import AuthForm from '../components/AuthForm';
 import Spacer from '../components/Spacer';
 import * as navigationRef from '../navigationRef';
 import {Context as AuthContext} from '../context/AuthContext';
 
 const SigninScreen = () => {
-  const {state, signin, clearErrorMessage} = useContext(AuthContext);
+  const { state, signin, clearErrorMessage } = useContext(AuthContext);
 
   return (
-    <View style={styles.container}>
+    <View style={ styles.container }>
       <AuthForm
         headaeText="Sign in to your account"
-        errorMessage={state.errorMessage}
+        errorMessage={ state.errorMessage }
         submitButtonText="Sign In"
-        onSubmit={signin}
+        onSubmit={ signin }
       />
-      <TouchableOpacity onPress={() => {
-        navigationRef.navigate('Signup')
-        clearErrorMessage();
-      }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigationRef.navigate('Signup')
+          clearErrorMessage();
+        }}>
         <Spacer>
-          <Text style={styles.link}>
+          <Text style={ styles.link }>
             "Don't have an account? Sign up instead"
           </Text>
         </Spacer>

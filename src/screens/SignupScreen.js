@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import { NavigationEvents } from 'react-navigation';
 import AuthForm from '../components/AuthForm';
 import Spacer from '../components/Spacer';
 import * as navigationRef from '../navigationRef';
@@ -11,17 +10,17 @@ const SignupScreen = () => {
 
   return (
     <View style={styles.container}>
-
       <AuthForm 
         headaeText= "Sign Up for Tracker"
-        errorMessage= {state.errorMessage}
+        errorMessage= { state.errorMessage }
         submitButtonText= "Sign Up"
         onSubmit= {signup}
       />
-      <TouchableOpacity onPress={() => {
-        navigationRef.navigate('Signin')
-        clearErrorMessage();
-      }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigationRef.navigate('Signin')
+          clearErrorMessage();
+        }}>
         <Spacer>
           <Text style={styles.link}>"Don't have an account? Sign in instead"</Text>
         </Spacer>
