@@ -53,7 +53,7 @@ const signin = dispatch => async ({ email, password }) => {
     await AsyncStorage.setItem('token', response.data.id);
     dispatch({ type: 'signin', payload: response.data.id });
 
-    navigate('Stations');
+    navigate('Home');
   } catch (err) {
     dispatch({
       type: 'add_error',
@@ -65,7 +65,7 @@ const signin = dispatch => async ({ email, password }) => {
 const signout = dispatch => async () => {
   await AsyncStorage.removeItem('token');
   dispatch({ type: 'signout' });
-  navigate('loginFlow');
+  navigate('Signin');
 };
 
 export const {Provider, Context} = createDataContext(
