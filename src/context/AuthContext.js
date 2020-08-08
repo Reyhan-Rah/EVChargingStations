@@ -22,7 +22,7 @@ const tryLocalSignin = dispatch => async () => {
   const token = await AsyncStorage.getItem('token');
   if (token) {
     dispatch({ type: 'signin', payload: token });
-    navigate('Stations');
+    navigate('Home');
   } else {
     navigate('Signup');
   }
@@ -38,7 +38,7 @@ const signup = dispatch => async ({email, password}) => {
     await AsyncStorage.setItem('token', response.data.id);
     dispatch({ type: 'signin', payload: response.data.id });
 
-    navigate('Stations');
+    navigate('Home');
   } catch (err) {
     dispatch({
       type: 'add_error',

@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import AccountScreen from './screens/AccountScreen';
 import SignupScreen from './screens/SignupScreen';
@@ -15,15 +16,31 @@ const Tab = createBottomTabNavigator();
 const Home = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Stations" component={ StationsScreen } />
-      <Tab.Screen name="Company" component={ CompanyScreen } />
-      <Tab.Screen name="Account" component={ AccountScreen } />
+      <Tab.Screen
+        name="Stations"
+        component={ StationsScreen }
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Company"
+        component={ CompanyScreen }
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={ AccountScreen }
+        options={{ headerShown: false }}
+      />
     </Tab.Navigator>
   );
 };
 
 const Routers = () => {
-  const { state } = useContext(AuthContext);
+  const { state, tryLocalSignin } = useContext(AuthContext);
+
+  useEffect(() => {
+    tryLocalSignin();
+  }, []);
 
   return (
     <Stack.Navigator>
@@ -42,7 +59,11 @@ const Routers = () => {
         </>
       ) : (
         <>
-          <Stack.Screen name="Home" component={ Home } />
+          <Stack.Screen
+            name="Home"
+            component={ Home }
+            options={{ headerShown: false }}
+          />
         </>
       )}
     </Stack.Navigator>
