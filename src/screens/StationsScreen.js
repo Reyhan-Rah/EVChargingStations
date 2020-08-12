@@ -1,11 +1,31 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { StyleSheet, FlatList, TouchableOpacity, Text } from 'react-native';
+import { Context as StationsContext } from '../context/StationsContext';
+import { ListItem } from 'react-native-elements';
 
-const StationsScreen = () => {
+const StationsScreen = ({ navigation }) => {
+  const { state, fetchStations } = useContext(StationsContext);
+
+  useEffect(() => {
+    navigation.addListener('focus', () => {
+     {fetchStations}
+    });
+  }, [navigation]);
+
   return (
-    <View>
-      <Text style={{ fontSize: 48 }}>Stations Screen</Text>
-    </View>
+    <>
+      <FlatList
+        data={state}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => {
+          return (
+            <TouchableOpacity>
+              <ListItem chevron title={item.name} />
+            </TouchableOpacity>
+          );
+        }}
+      />
+    </>
   );
 };
 

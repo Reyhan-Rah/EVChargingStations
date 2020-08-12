@@ -2,23 +2,23 @@ import createDataContext from './createDataContext';
 import userApi from '../api/user';
 import AsyncStorage from '@react-native-community/async-storage';
 
-const companyReducer = (state, action) => {
+const stationReducer = (state, action) => {
   switch (action.type) {
-    case 'fetch_companies':
+    case 'fetch_stations':
       return action.payload;
     default:
       return state;
   }
 };
 
-const fetchCompanies = dispatch => async () => {
+const fetchStations = dispatch => async () => {
   const token = await AsyncStorage.getItem('token');
-  const response: any = await userApi.get(`/Companies?access_token=${token}`);
-  dispatch ({ type: 'fetch_companies', payload: response.data });
+  const response = await userApi.get(`/Stations?access_token=${token}`);
+  dispatch({ type: 'fetch_stations', payload: response.data });
 };
 
 export const { Provider, Context } = createDataContext(
-  companyReducer,
-  { fetchCompanies },
+  stationReducer,
+  { fetchStations },
   []
 );
