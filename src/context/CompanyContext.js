@@ -13,7 +13,7 @@ const companyReducer = (state, action) => {
 
 const fetchCompanies = dispatch => async () => {
   const token = await AsyncStorage.getItem('token');
-  const response: any = await userApi.get(`/Companies?access_token=${token}`);
+  const response = await userApi.get(`/Companies?access_token=${token}`);
   dispatch ({ type: 'fetch_companies', payload: response.data });
 };
 

@@ -3,17 +3,16 @@ import { StyleSheet, FlatList, TouchableOpacity, Text } from 'react-native';
 import { Context as StationsContext } from '../context/StationsContext';
 import { ListItem } from 'react-native-elements';
 
-const StationsScreen = ({ navigation }) => {
+const StationsScreen = () => {
   const { state, fetchStations } = useContext(StationsContext);
 
   useEffect(() => {
-    navigation.addListener('focus', () => {
-     {fetchStations}
-    });
-  }, [navigation]);
+    fetchStations();
+  }, []);
 
   return (
     <>
+      <Text style={{ fontSize: 30 }}>Stations List</Text>
       <FlatList
         data={state}
         keyExtractor={item => item.id}
