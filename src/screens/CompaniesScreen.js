@@ -3,7 +3,7 @@ import { Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Context as CompanyContext } from '../context/CompanyContext';
 import { ListItem } from 'react-native-elements';
 
-const CompaniesScreen = () => {
+const CompaniesScreen = ({ navigation }) => {
 const { state, fetchCompanies } = useContext(CompanyContext);
 
   useEffect(() => {
@@ -18,7 +18,10 @@ const { state, fetchCompanies } = useContext(CompanyContext);
         keyExtractor={item => item.id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress = {() => 
+                navigation.navigate('CompanyDetail', { id: item.id})
+              }>
               <ListItem chevron title={item.name} />
             </TouchableOpacity>
           );

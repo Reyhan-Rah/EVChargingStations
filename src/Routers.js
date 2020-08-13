@@ -2,16 +2,33 @@ import React, { useContext, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-
 import AccountScreen from './screens/AccountScreen';
 import SignupScreen from './screens/SignupScreen';
 import SigninScreen from './screens/SigninScreen';
 import CompaniesScreen from './screens/CompaniesScreen';
+import CompanyDetailScreen from './screens/CompanyDetailScreen';
 import StationsScreen from './screens/StationsScreen';
 import { Context as AuthContext } from './context/AuthContext';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const Company = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Companies"
+        component={ CompaniesScreen }
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CompanyDetail"
+        component={ CompanyDetailScreen }
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const Home = () => {
   return (
@@ -23,7 +40,7 @@ const Home = () => {
       />
       <Tab.Screen
         name="Companies"
-        component={ CompaniesScreen }
+        component={ Company }
         options={{ headerShown: false }}
       />
       <Tab.Screen
