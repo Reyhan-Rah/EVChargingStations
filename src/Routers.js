@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 import AccountScreen from './screens/AccountScreen';
 import SignupScreen from './screens/SignupScreen';
 import SigninScreen from './screens/SigninScreen';
-import CompanyScreen from './screens/CompanyScreen';
+import CompaniesScreen from './screens/CompaniesScreen';
 import StationsScreen from './screens/StationsScreen';
 import { Context as AuthContext } from './context/AuthContext';
 
@@ -22,8 +22,8 @@ const Home = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Company"
-        component={ CompanyScreen }
+        name="Companies"
+        component={ CompaniesScreen }
         options={{ headerShown: false }}
       />
       <Tab.Screen

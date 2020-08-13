@@ -3,7 +3,7 @@ import { Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { Context as CompanyContext } from '../context/CompanyContext';
 import { ListItem } from 'react-native-elements';
 
-const CompanyScreen = () => {
+const CompaniesScreen = () => {
 const { state, fetchCompanies } = useContext(CompanyContext);
 
   useEffect(() => {
@@ -30,4 +30,4 @@ const { state, fetchCompanies } = useContext(CompanyContext);
 
 const styles = StyleSheet.create({});
 
-export default CompanyScreen;
+export default CompaniesScreen;
