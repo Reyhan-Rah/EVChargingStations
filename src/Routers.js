@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 const Company = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Companies">
       <Stack.Screen
         name="Companies"
         component={ CompaniesScreen }

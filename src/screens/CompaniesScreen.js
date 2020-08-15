@@ -20,7 +20,7 @@ const { state, fetchCompanies } = useContext(CompanyContext);
           return (
             <TouchableOpacity
               onPress = {() => 
-                navigation.navigate('CompanyDetail', { id: item.id})
+                navigation.navigate('CompanyDetail', { id: item.id })
               }>
               <ListItem chevron title={item.name} />
             </TouchableOpacity>
