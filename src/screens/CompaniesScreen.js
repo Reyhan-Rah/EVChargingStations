@@ -10,11 +10,13 @@ const { state, fetchCompanies } = useContext(CompanyContext);
     fetchCompanies();
   }, []);
 
+  console.log(state.companies);
+
   return (
     <>
       <Text style={{ fontSize: 30 }}>Companies List</Text>
       <FlatList
-        data={state}
+        data={state.companies}
         keyExtractor={item => item.id}
         renderItem={({ item }) => {
           return (
