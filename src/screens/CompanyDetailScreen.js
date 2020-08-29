@@ -7,34 +7,29 @@ const CompanyDetailScreen = ({ route, navigation }) => {
   const { state, fetchChildCompanies } = useContext(CompanyContext);
   const { id } = route.params;
 
-  //const Company = state.find(c => c.id === id);
-
   useEffect(() => {
     fetchChildCompanies(id);
   }, []);
 
-  console.log(state.company);
+  const name = state.company[0].name;
+  const child = state.company[0].child;
 
   return (
     <>
-      <Text style={{ fontSize: 30 }}>CompanyDetailScreen</Text>
+      <Text style={{ fontSize: 30 }}>{name}'s Screen </Text>
+      <Text style={{ fontSize: 20 }}>This company has {child.length} child </Text>
 
       <FlatList
-        data={state.company}
-        keyExtractor={item => item.id}
+        data={child}
+        keyExtractor={item => item._id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
-              onPress = {() => 
-                navigation.navigate('CompanyDetail', { id: item.id })
-              }>
+            <TouchableOpacity>
               <ListItem chevron title={item.name} />
-              <ListItem chevron title={item.child} />
             </TouchableOpacity>
           );
         }}
       />
-      
     </>
   );
 };

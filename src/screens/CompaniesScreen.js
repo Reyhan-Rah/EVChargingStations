@@ -4,7 +4,7 @@ import { Context as CompanyContext } from '../context/CompanyContext';
 import { ListItem } from 'react-native-elements';
 
 const CompaniesScreen = ({ navigation }) => {
-const { state, fetchCompanies } = useContext(CompanyContext);
+  const { state, fetchCompanies } = useContext(CompanyContext);
 
   useEffect(() => {
     fetchCompanies();

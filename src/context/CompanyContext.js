@@ -16,7 +16,7 @@ const companyReducer = (state, action) => {
 const fetchCompanies = dispatch => async () => {
   const token = await AsyncStorage.getItem('token');
   const response = await userApi.get(`/Companies?access_token=${token}`);
-  dispatch ({ type: 'fetch_companies', payload: response.data });
+  dispatch({ type: 'fetch_companies', payload: response.data });
 };
 
 const fetchChildCompanies = dispatch => async ( itemId ) => {
@@ -26,7 +26,7 @@ const fetchChildCompanies = dispatch => async ( itemId ) => {
     { company_id: itemId }
   );
 
-  dispatch ({ type: 'fetch_child_companies', payload: response.data.result }); 
+  dispatch({ type: 'fetch_child_companies', payload: response.data.result }); 
 };
 
 export const { Provider, Context } = createDataContext(
