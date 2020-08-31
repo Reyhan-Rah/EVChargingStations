@@ -11,9 +11,16 @@ const CompanyDetailScreen = ({ route, navigation }) => {
     fetchChildCompanies(id);
   }, []);
 
+  if (!state.company || state.company.length === 0) {
+    return null;
+  }
+
+  console.log(state.company);
+
   const name = state.company[0].name;
   const child = state.company[0].child;
 
+  
   return (
     <>
       <Text style={{ fontSize: 30 }}>{name}'s Screen </Text>
