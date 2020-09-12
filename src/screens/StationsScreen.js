@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { StyleSheet, FlatList, TouchableOpacity, Text } from 'react-native';
 import { Context as StationsContext } from '../context/StationsContext';
 import { ListItem } from 'react-native-elements';
+import Spacer from '../components/Spacer';
 
 const StationsScreen = () => {
   const { state, fetchStations } = useContext(StationsContext);
@@ -12,7 +13,9 @@ const StationsScreen = () => {
 
   return (
     <>
-      <Text style={{ fontSize: 30 }}>Stations List</Text>
+      <Spacer>
+        <Text style={{ fontSize: 30 }}>Stations List</Text>
+      </Spacer>
       <FlatList
         data={state}
         keyExtractor={item => item.id}

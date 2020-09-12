@@ -32,5 +32,5 @@ const fetchChildCompanies = dispatch => async ( itemId ) => {
 export const { Provider, Context } = createDataContext(
   companyReducer,
   { fetchCompanies, fetchChildCompanies },
-  {companies:'', company:[]}
+  {companies: null , company: null}
 );

@@ -24,7 +24,7 @@ const Company = () => {
       <Stack.Screen
         name="CompanyDetail"
         component={ CompanyDetailScreen }
-        options={{ headerShown: false }}
+        options={{title: 'Back'}}
       />
     </Stack.Navigator>
   );
@@ -36,17 +36,17 @@ const Home = () => {
       <Tab.Screen
         name="Stations"
         component={ StationsScreen }
-        options={{ headerShown: false }}
+        options={{title: 'Stations'}}
       />
       <Tab.Screen
         name="Companies"
         component={ Company }
-        options={{ headerShown: false }}
+        options={{title: 'Companies'}}
       />
       <Tab.Screen
         name="Account"
         component={ AccountScreen }
-        options={{ headerShown: false }}
+        options={{title: 'Account'}}
       />
     </Tab.Navigator>
   );
