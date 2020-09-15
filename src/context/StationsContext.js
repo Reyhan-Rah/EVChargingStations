@@ -14,11 +14,11 @@ const stationReducer = (state, action) => {
 const fetchStations = dispatch => async () => {
   const token = await AsyncStorage.getItem('token');
   const response = await userApi.get(`/Stations?access_token=${token}`);
-  dispatch({ type: 'fetch_stations', payload: response.data });
+  dispatch({type: 'fetch_stations', payload: response.data});
 };
 
-export const { Provider, Context } = createDataContext(
+export const {Provider, Context} = createDataContext(
   stationReducer,
-  { fetchStations },
-  []
+  {fetchStations},
+  [],
 );

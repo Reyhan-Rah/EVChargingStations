@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React, {useContext, useEffect} from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import AccountScreen from './screens/AccountScreen';
 import SignupScreen from './screens/SignupScreen';
@@ -8,7 +8,7 @@ import SigninScreen from './screens/SigninScreen';
 import CompaniesScreen from './screens/CompaniesScreen';
 import CompanyDetailScreen from './screens/CompanyDetailScreen';
 import StationsScreen from './screens/StationsScreen';
-import { Context as AuthContext } from './context/AuthContext';
+import {Context as AuthContext} from './context/AuthContext';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -18,12 +18,12 @@ const Company = () => {
     <Stack.Navigator initialRouteName="Companies">
       <Stack.Screen
         name="Companies"
-        component={ CompaniesScreen }
-        options={{ headerShown: false }}
+        component={CompaniesScreen}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="CompanyDetail"
-        component={ CompanyDetailScreen }
+        component={CompanyDetailScreen}
         options={{title: 'Back'}}
       />
     </Stack.Navigator>
@@ -35,17 +35,17 @@ const Home = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Stations"
-        component={ StationsScreen }
+        component={StationsScreen}
         options={{title: 'Stations'}}
       />
       <Tab.Screen
         name="Companies"
-        component={ Company }
+        component={Company}
         options={{title: 'Companies'}}
       />
       <Tab.Screen
         name="Account"
-        component={ AccountScreen }
+        component={AccountScreen}
         options={{title: 'Account'}}
       />
     </Tab.Navigator>
@@ -53,7 +53,7 @@ const Home = () => {
 };
 
 const Routers = () => {
-  const { state, tryLocalSignin } = useContext(AuthContext);
+  const {state, tryLocalSignin} = useContext(AuthContext);
 
   useEffect(() => {
     tryLocalSignin();
@@ -65,21 +65,21 @@ const Routers = () => {
         <>
           <Stack.Screen
             name="Signin"
-            component={ SigninScreen }
-            options={{ headerShown: false }}
+            component={SigninScreen}
+            options={{headerShown: false}}
           />
           <Stack.Screen
             name="Signup"
-            component={ SignupScreen }
-            options={{ headerShown: false }}
+            component={SignupScreen}
+            options={{headerShown: false}}
           />
         </>
       ) : (
         <>
           <Stack.Screen
             name="Home"
-            component={ Home }
-            options={{ headerShown: false }}
+            component={Home}
+            options={{headerShown: false}}
           />
         </>
       )}

@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 
-import { Provider as AuthProvider } from './src/context/AuthContext';
-import { Provider as StationsProvider } from './src/context/StationsContext';
-import { Provider as CompanyProvider } from './src/context/CompanyContext';
-import { navigationRef } from './src/navigationRef';
+import {Provider as AuthProvider} from './src/context/AuthContext';
+import {Provider as StationsProvider} from './src/context/StationsContext';
+import {Provider as CompanyProvider} from './src/context/CompanyContext';
+import {navigationRef} from './src/navigationRef';
 import Routers from './src/Routers';
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
     <CompanyProvider>
       <StationsProvider>
         <AuthProvider>
-        <NavigationContainer ref={ navigationRef }>
+          <NavigationContainer ref={navigationRef}>
             <Routers />
           </NavigationContainer>
         </AuthProvider>
