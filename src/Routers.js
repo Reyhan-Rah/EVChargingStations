@@ -16,16 +16,8 @@ const Tab = createBottomTabNavigator();
 const Company = () => {
   return (
     <Stack.Navigator initialRouteName="Companies">
-      <Stack.Screen
-        name="Companies"
-        component={CompaniesScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="CompanyDetail"
-        component={CompanyDetailScreen}
-        options={{title: 'Back'}}
-      />
+      <Stack.Screen name="Companies" component={CompaniesScreen} />
+      <Stack.Screen name="CompanyDetail" component={CompanyDetailScreen} />
     </Stack.Navigator>
   );
 };
@@ -33,21 +25,9 @@ const Company = () => {
 const Home = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen
-        name="Stations"
-        component={StationsScreen}
-        options={{title: 'Stations'}}
-      />
-      <Tab.Screen
-        name="Companies"
-        component={Company}
-        options={{title: 'Companies'}}
-      />
-      <Tab.Screen
-        name="Account"
-        component={AccountScreen}
-        options={{title: 'Account'}}
-      />
+      <Tab.Screen name="Stations" component={StationsScreen} />
+      <Tab.Screen name="Companies" component={Company} />
+      <Tab.Screen name="Account" component={AccountScreen} />
     </Tab.Navigator>
   );
 };

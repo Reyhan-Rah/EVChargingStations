@@ -13,9 +13,6 @@ const CompaniesScreen = ({navigation}) => {
 
   return (
     <>
-      <Spacer>
-        <Text style={{fontSize: 26}}>Companies List</Text>
-      </Spacer>
       <FlatList
         data={state.companies}
         keyExtractor={item => item.id}

@@ -10,7 +10,7 @@ const SignupScreen = () => {
 
   return (
     <View style={styles.container}>
-      <AuthForm 
+      <AuthForm
         headaeText="Sign Up for Tracker"
         errorMessage={state.errorMessage}
         submitButtonText="Sign Up"
@@ -23,7 +23,7 @@ const SignupScreen = () => {
         }}>
         <Spacer>
           <Text style={styles.link}>
-            "Don't have an account? Sign in instead"
+            "Do you have an account? Sign in instead"
           </Text>
         </Spacer>
       </TouchableOpacity>

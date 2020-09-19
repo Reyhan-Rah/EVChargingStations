@@ -22,14 +22,12 @@ const CompanyDetailScreen = ({route, navigation}) => {
   return (
     <>
       <Spacer>
-        <Text style={{fontSize: 26}}>{name}'s Details</Text>
-        <Spacer />
         {child.length === 0 ? (
-          <Text>This company has no child.</Text>
+          <Text>This Company has no child.</Text>
         ) : child.length === 1 ? (
-          <Text>This company own a company:</Text>
+          <Text>Child Company:</Text>
         ) : (
-          <Text>This company own {child.length} companies:</Text>
+          <Text>Child Companies:</Text>
         )}
       </Spacer>
 
