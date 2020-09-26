@@ -1,15 +1,18 @@
-import React, {useContext} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import AuthForm from '../components/AuthForm';
 import Spacer from '../components/Spacer';
 import * as navigationRef from '../navigationRef';
-import {Context as AuthContext} from '../context/AuthContext';
+import { Context as AuthContext } from '../context/AuthContext';
 
 const SigninScreen = () => {
-  const {state, signin, clearErrorMessage} = useContext(AuthContext);
+  const { state, signin, clearErrorMessage } = useContext(AuthContext);
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+    >
       <AuthForm
         headaeText="Sign in to your account"
         errorMessage={state.errorMessage}
@@ -27,7 +30,7 @@ const SigninScreen = () => {
           </Text>
         </Spacer>
       </TouchableOpacity>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -35,8 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginBottom: 250,
-    marginTop: 100,
+    marginBottom: 100,
   },
   link: {
     color: 'blue',
