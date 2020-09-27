@@ -10,7 +10,7 @@ const CompanyDetailScreen = ({ route, navigation }) => {
 
   useEffect(() => {
     fetchChildCompanies(id);
-  }, []);
+  }, [id]);
 
   if (!state.company) {
     return null;
@@ -19,8 +19,19 @@ const CompanyDetailScreen = ({ route, navigation }) => {
   const name = state.company[0].name;
   const child = state.company[0].child;
 
+  if (state.isLoading) {
+    return (
+      <Spacer>
+        <Text>loading....</Text>
+      </Spacer>
+    );
+  }
+
   return (
     <>
+      <Spacer>
+        <Text>{name}</Text>
+      </Spacer>
       <Spacer>
         {child.length === 0 ? (
           <Text>This Company has no child.</Text>
