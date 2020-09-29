@@ -8,40 +8,40 @@ const CompanyDetailScreen = ({ route, navigation }) => {
   const { state, fetchChildCompanies } = useContext(CompanyContext);
   const { id } = route.params;
 
+  const company = state.companies.find(item => item.id === id);
+
   useEffect(() => {
     fetchChildCompanies(id);
   }, [id]);
 
-  if (!state.company) {
-    return null;
-  }
-
-  const name = state.company[0].name;
-  const child = state.company[0].child;
-
   if (state.isLoading) {
     return (
       <Spacer>
-        <Text>loading....</Text>
+        <Text style={styles.subject}>loading....</Text>
       </Spacer>
     );
+  }
+
+  const child = company.child;
+
+  if (!child) {
+    return null;
   }
 
   return (
     <>
       <Spacer>
-        <Text>{name}</Text>
+        <Text style={styles.title}>{company.name}</Text>
       </Spacer>
       <Spacer>
         {child.length === 0 ? (
-          <Text>This Company has no child.</Text>
+          <Text style={styles.subject}>This Company has no child.</Text>
         ) : child.length === 1 ? (
-          <Text>Child Company:</Text>
+          <Text style={styles.subject}>Child Company:</Text>
         ) : (
-              <Text>Child Companies:</Text>
+              <Text style={styles.subject}>Child Companies:</Text>
             )}
       </Spacer>
-
       <FlatList
         data={child}
         keyExtractor={item => item._id}
@@ -58,6 +58,16 @@ const CompanyDetailScreen = ({ route, navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  subject: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
 
 export default CompanyDetailScreen;
