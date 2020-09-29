@@ -4,7 +4,7 @@ import { Context as CompanyContext } from '../context/CompanyContext';
 import { ListItem } from 'react-native-elements';
 import Spacer from '../components/Spacer';
 
-const CompanyDetailScreen = ({ route, navigation }) => {
+const CompanyDetailsScreen = ({ route, navigation }) => {
   const { state, fetchChildCompanies } = useContext(CompanyContext);
   const { id } = route.params;
 
@@ -48,7 +48,7 @@ const CompanyDetailScreen = ({ route, navigation }) => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.push('CompanyDetail', { id: item._id })}>
+              onPress={() => navigation.push('CompanyDetails', { id: item._id })}>
               <ListItem chevron title={item.name} />
             </TouchableOpacity>
           );
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CompanyDetailScreen;
+export default CompanyDetailsScreen;
